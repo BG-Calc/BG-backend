@@ -10,7 +10,7 @@ interface IGames {
 
 const gameSchema = new Schema<IGames>({
     date: {type: Date, required: true},
-    players: {type: [String], required: true},
+    players: [{type: String, ref: 'User', required: true}],
     winner: {type: String, required: true},
     score: {type: Number, required: true}
 })
