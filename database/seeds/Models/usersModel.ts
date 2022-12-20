@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-interface IUser {
+export interface IUser {
     _id: string,
     name: string,
     gamesPlayed: number,
@@ -16,4 +16,4 @@ const userSchema = new Schema<IUser>({
     maxScore: {type: Number, required: true}
 });
 
-const User = model<IUser>('User', userSchema);
+export const User = model<IUser>('User', userSchema);
