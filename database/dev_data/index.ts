@@ -1,0 +1,3 @@
+
+
+exports.factionData = require("./factions");
