@@ -4,9 +4,9 @@ const connection = require("../connection");
 
 const mongooseSeed = require("mongoose");
 const { seedDatabase } = require("./seed");
-const data = require("../dev_data/index");
+const data = require("../test_data/index");
 
-const { factionData } = data;
+const { factionData, usersData } = data;
 
 // console.log(factionData)
 
@@ -14,7 +14,7 @@ connection();
 const runSeed = async () => {
     try {
         console.log("seeding")
-        await seedDatabase(factionData);
+        await seedDatabase(factionData, usersData);
         mongooseSeed.connection.close();
     } catch(err) {
         console.log(err)
