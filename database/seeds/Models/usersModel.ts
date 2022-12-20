@@ -10,7 +10,7 @@ export interface IUser {
 
 const userSchema = new Schema<IUser>({
     _id : {type: String, required: true},
-    name: { type: String, required: true},
+    name: { type: String, required: true, unique: true},
     gamesPlayed: {type: Number, required: true},
     gamesWon: {type: Number, required: true},
     maxScore: {type: Number, required: true}
