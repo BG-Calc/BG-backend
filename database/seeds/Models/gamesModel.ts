@@ -1,16 +1,35 @@
 import { Schema, model } from 'mongoose';
-import { IUser } from './usersModel'
+import IUser from './usersModel'
 
-interface IGames {
+interface IPlayer {
+    name: IUser,
+    coinsInHand: number,
+    popularity: number,
+    stars: number,
+    territories: number,
+    resources: number,
+    totalScore: number
+}
+
+ export default interface IGames {
     date: Date,
-    players: IUser["name"][],
     winner: string,
-    score: number
+    score: number,
+    players: IPlayer[]
+    // IUser["name"][]
 }
 
 const gameSchema = new Schema<IGames>({
     date: {type: Date, required: true},
-    players: [{type: String, ref: 'User', required: true}],
+    players: [{
+        name: { type: Schema.Types.ObjectId, ref: 'User' },
+        coinsInHand: { type: Number, required: true },
+        popularity: { type: Number, required: true },
+        stars: { type: Number, required: true },
+        territories: { type: Number, required: true },
+        resources: { type: Number, required: true },
+        totalScore: { type: Number, required: true }
+    }],
     winner: {type: String, required: true},
     score: {type: Number, required: true}
 })

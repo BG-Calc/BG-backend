@@ -1,9 +1,9 @@
-import { User } from "./Models/usersModel";
-import { Games } from "./Models/gamesModel";
-import { Faction } from "./Models/factionsModel";
+import IUser, { User } from "./Models/usersModel";
+import IGames, { Games } from "./Models/gamesModel";
+import IFaction, { Faction } from "./Models/factionsModel";
 import mongoose from "mongoose";
 
-export const seedDatabase = async (factionData: typeof Faction, usersData: typeof User, gamesData: typeof Games) => {
+export const seedDatabase = async (factionData: IFaction, usersData: IUser, gamesData: IGames) => {
     await Faction.deleteMany({});
     await Faction.insertMany(factionData);
     await User.deleteMany({});

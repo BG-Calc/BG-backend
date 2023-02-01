@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-interface IFactions {
+export default interface IFactions {
     name: string
 }
 
