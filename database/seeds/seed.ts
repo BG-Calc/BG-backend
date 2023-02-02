@@ -15,3 +15,5 @@ export const seedDatabase = async (factionData: IFaction, usersData: IUser, game
 export const closeDB = async () => {
     await mongoose.connection.close()
 }
+
+export default mongoose
