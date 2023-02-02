@@ -1,4 +1,4 @@
-export {}
+// export {}
 // import { Faction } from "../database/seeds/Models/factionsModel"
 const request = require("supertest");
 const app = require("../app");
@@ -15,27 +15,26 @@ afterAll(async () => await closeDB())
 
 describe('test express app', () => {
     describe('/api', () => {
-        describe('/allUsers', () => {
-            test('GET /api/allUsers returns array of all users', () => {
-                return request(app)
-                .get('/api/allUsers')
-                .expect(200)
-                .then(({ body }) => {
-                    expect(body).toHaveLength(3)
-                    expect(Array.isArray(body)).toBe(true)
-                    body.forEach((user) => {
-                        expect(user).toEqual(
-                            expect.objectContaining({
-                                name: expect.any(String),
-                                gamesPlayed: expect.any(Number),
-                                gamesWon: expect.any(Number),
-                                maxScore: expect.any(Number)
-                            })
-                        )
-                    })
-                })
-            })
-        })
-    })
-})
-
+      describe('/allUsers', () => {
+        test('GET /api/allUsers returns array of all users', async () => {
+          const { body } = await request(app)
+            .get('/api/allUsers')
+            .expect(200);
+  
+        //   expect(status).toBe(200);
+          expect(body).toHaveLength(3);
+          expect(Array.isArray(body)).toBe(true);
+          body.forEach((user) => {
+            expect(user).toEqual(
+                expect.objectContaining({
+                name: expect.any(String),
+                gamesPlayed: expect.any(Number),
+                gamesWon: expect.any(Number),
+                maxScore: expect.any(Number),
+              })
+            );
+          });
+        });
+      });
+    });
+  });
