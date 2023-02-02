@@ -8,6 +8,7 @@ interface IPlayer {
     stars: number,
     territories: number,
     resources: number,
+    bonusPoints: number,
     totalScore: number
 }
 
@@ -28,6 +29,7 @@ const gameSchema = new Schema<IGames>({
         stars: { type: Number, required: true },
         territories: { type: Number, required: true },
         resources: { type: Number, required: true },
+        bonusPoints: {type:Number, required: true},
         totalScore: { type: Number, required: true }
     }],
     winner: {type: String, required: true},
